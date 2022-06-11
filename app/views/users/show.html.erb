@@ -1,0 +1,10 @@
+<h1> Your Personal Events </h1>
+
+<% @user_events.each do |event| %>
+  <p>
+    <%= event.title %>
+  </p>
+  <p>
+    <%= event.date %>
+  </p>
+<% end %>
