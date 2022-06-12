@@ -6,3 +6,7 @@
 <p>
   <%= @event.date %>
 </p>
+
+<% if user_signed_in? %>
+  <%= render 'attend_form' %> 
+<% end %>

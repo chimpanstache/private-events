@@ -23,8 +23,26 @@ class EventsController < ApplicationController
     end
   end
 
+  def attend
+    puts "#######################################################"
+    puts "#######################################################"
+    puts "#######################################################"
+    puts "#######################################################"
+    puts "#######################################################"
+    puts "#######################################################"
+    puts "#######################################################"
+    puts "#######################################################"
+    puts "#######################################################"
+    puts "#######################################################"
+    puts "#######################################################"
+    @attendance = EventAttendance.create(attendance_params)
+  end 
 
-  private 
+  private
+  
+  def attendance_params
+    params.require(:event_attendance).permit(:attended_event_id, :attendee_id, :will_attend)
+  end
 
   def event_params
     params.require(:event).permit(:title, :date)
