@@ -2,13 +2,6 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    puts "############################"
-    puts "############################"
-    puts "############################"
-    puts "############################"
-    puts "############################"
-    puts "############################"
-    puts "############################"
     @events = Event.all
   end
 
