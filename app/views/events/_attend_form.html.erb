@@ -2,10 +2,6 @@
 
 <%= form_with(url: attend_path, scope: :attend, local: true) do |form| %>
   <p>
-    <%= form.label :will_attend %><br>
-    <%= form.check_box :will_attend %>
-  </p>
-  <p>
     <%= form.submit %>
   </p>
 <% end %>

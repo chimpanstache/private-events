@@ -8,5 +8,5 @@
 </p>
 
 <% if user_signed_in? %>
-  <%= render 'attend_form' %> 
+  <%= render 'attend_form', id: @event.id %> 
 <% end %>
