@@ -7,6 +7,13 @@
   <%= @event.date %>
 </p>
 
+<% @attendees.each do |attendee| %>
+  <p>
+    <%= attendee.email %>
+  </p>
+<% end %>
+
 <% if user_signed_in? %>
   <%= render 'attend_form', id: @event.id %> 
 <% end %>
+
