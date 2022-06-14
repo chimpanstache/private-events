@@ -1,7 +1,8 @@
 <h2>Attend event:</h2>
 
-<%= form_with(url: attend_path, scope: :attend, local: true) do |form| %>
+<%= form_with(url: attend_path, local: true) do |form| %>
   <p>
+    <%= form.hidden_field :id, value: @event.id %>
     <%= form.submit %>
   </p>
 <% end %>

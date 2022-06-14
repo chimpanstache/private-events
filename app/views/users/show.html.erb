@@ -8,3 +8,14 @@
     <%= event.date %>
   </p>
 <% end %>
+
+<h1> Events you're attending : </h1>
+
+<% @attended_events.each do |event| %>
+  <p>
+    <%= event.title %>
+  </p>
+  <p>
+    <%= event.date %>
+  </p>
+<% end %>
