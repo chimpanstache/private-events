@@ -1,5 +1,23 @@
-<% form_with model: @event do |form| %>
+<h1>New Event</h1>
+
+<%= @event.errors.each do |err| %>
+    <%= err %>
+<% end %>
+<%=form_with model: @event do |form| %>
+  <div>
+    <%= form.label :title %><br>
     <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :time %><br>
     <%= form.date_field :time %>
-    <%= form.submit "Create" %>
+  </div>
+    
+  
+  <div>
+    <%= form.submit %>
+  </div>
+
+  <%= "cuaaaaa #{current_user.id}" %>
 <% end %>

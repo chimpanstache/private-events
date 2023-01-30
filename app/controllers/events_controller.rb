@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @all_events = Event.all
   end
@@ -8,8 +10,14 @@ class EventsController < ApplicationController
   end
 
   def create
-    current_user.create_event(event_params)
-    redirect_to show_user_path(current_user.id)
+    event_params.merge!({creator_id: current_user.id})
+    @event = Event.new(event_params)
+
+    if @event.save
+      redirect_to @event
+    else
+      render :new, status: :unprocessable_entity
+    end  
   end
 
   private
