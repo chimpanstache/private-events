@@ -1,0 +1,5 @@
+<% form_with model: @event do |form| %>
+    <%= form.text_field :title %>
+    <%= form.date_field :time %>
+    <%= form.submit "Create" %>
+<% end %>
