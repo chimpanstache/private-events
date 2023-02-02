@@ -10,11 +10,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    event_params.merge!({creator_id: current_user.id})
-    @event = Event.new(event_params)
+    event_infos = event_params.merge({creator_id: current_user.id})
+    @event = Event.new(event_infos)
 
     if @event.save
-      redirect_to @event
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end  
