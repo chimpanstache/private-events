@@ -17,7 +17,12 @@ class EventsController < ApplicationController
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
-    end  
+    end
+  end
+
+  def show
+    @event = Event.find(params[:id])
+    byebug
   end
 
   private
