@@ -3,6 +3,11 @@
 
 <%= @event.title %>
 <%= @event.time %>
-<%= @event.creator.email %>
+<%= @event&.creator&.email %>
+<br>
+
+<% if @event.creator != current_user %>
+  <%= link_to "Attend Event", events_attend_path(@event) %>
+<% end %>
 
 <br>

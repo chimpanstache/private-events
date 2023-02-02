@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'users/show', to: 'users#show'
 
   resources :events
+  get 'events/attend', to: 'events#attend'
 
   devise_for :users
   devise_scope :user do
