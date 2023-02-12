@@ -1,27 +1,31 @@
 <h1>Event</h1>
 <br>
 
+<h2>title</h2>
 <%= @event.title %>
+<h2>time</h2>
 <%= @event.time %>
-<%= @event&.creator&.email %>
+<%= "Creator: #{@event&.creator&.email}" %>
 <br>
 
 <% if @attendees.include?(current_user) %>
   <p>
     <%= 'You are attending this event!' %>
   </p>
+
+<% else %>
+  <h2>Attend event:</h2>
+    <%= form_with model: [ @event, @event.attendances.build ] do |form| %>
+        <%= form.submit %>
+    <% end %> 
 <% end %>
 
-<% if @host == current_user %>
-  <%= @event.attendees.each do |attendee| %>
+<h2> Attendee list </h2>
+  <% @event.attendees.each do |attendee| %>
     <%= attendee.email %>
     <br>
   <% end %>
-<% end %>
 
-<h2>Attend event:</h2>
-<%= form_with model: [ @event, @event.attendances.build ] do |form| %>
-    <%= form.submit %>
-<% end %>
+
 
 <br>

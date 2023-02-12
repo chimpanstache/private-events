@@ -6,14 +6,10 @@ class AttendancesController < ApplicationController
   end
 
   def create
+    @event = Event.find(params[:event_id])
     attendance_infos = attendance_params.merge({user_id: current_user.id})
-    @attendance = Attendance.new(attendance_infos)
-
-    if @attendance.save
-      redirect_to event_url
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @attendance = @event.attendances.create(attendance_infos)
+    redirect_to event_path(@event)
   end
 
   private

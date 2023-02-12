@@ -1,7 +1,31 @@
-<h1>My own events</h1>
+<h2>My own events</h2>
+<% if @own_events.empty? %> <%= 'You are not hosting any event yet' %> <% end %>
 
 <% @own_events.each do |event| %>
   <%= event.title %> 
   <%= event.time %>
   <br> 
+<% end %>
+
+<h2>Events I will attend</h2>
+<h3>past events</h3>
+<% if @past_attendances.empty? %> 
+  <%= 'You have not attended any events' %>
+<% else %>
+  <% @past_attendances.each do |event| %>
+    <%= event.title %> 
+    <%= event.time %>
+    <br> 
+  <% end %>
+<% end %>
+<br> 
+<h3>future events</h3>
+<% if @future_attendances.empty? %> 
+  <%= 'You have no events' %>
+<% else %>
+  <% @future_attendances.each do |event| %>
+    <%= event.title %> 
+    <%= event.time %>
+    <br> 
+  <% end %>
 <% end %>
