@@ -22,11 +22,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-  end
-
-  def attend
-    byebug
-    Event.find(params[:id]).attendees << current_user
+    @attendees = @event.attendees
+    @host = @event.creator
   end
 
   private

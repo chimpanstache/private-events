@@ -6,8 +6,22 @@
 <%= @event&.creator&.email %>
 <br>
 
-<% if @event.creator != current_user %>
-  <%= link_to "Attend Event", events_attend_path(@event) %>
+<% if @attendees.include?(current_user) %>
+  <p>
+    <%= 'You are attending this event!' %>
+  </p>
+<% end %>
+
+<% if @host == current_user %>
+  <%= @event.attendees.each do |attendee| %>
+    <%= attendee.email %>
+    <br>
+  <% end %>
+<% end %>
+
+<h2>Attend event:</h2>
+<%= form_with model: [ @event, @event.attendances.build ] do |form| %>
+    <%= form.submit %>
 <% end %>
 
 <br>

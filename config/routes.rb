@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  get 'users/show', to: 'users#show'
-
-  resources :events
-  get 'events/attend', to: 'events#attend'
-
   devise_for :users
-  devise_scope :user do
-    get 'sign_in', to: 'devise/sessions#new'
+  devise_scope :user do  
+    get '/users/sign_out' => 'devise/sessions#destroy'
   end
+
+  resources :events do
+    resources :attendances, shallow: true
+  end
+
+  resources :users, only: [:show]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

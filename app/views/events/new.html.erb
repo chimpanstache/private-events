@@ -3,6 +3,7 @@
 <%= @event.errors.each do |err| %>
     <%= err %>
 <% end %>
+
 <%=form_with model: @event do |form| %>
   <div>
     <%= form.label :title %><br>
